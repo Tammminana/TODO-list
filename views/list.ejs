@@ -4,13 +4,17 @@
     </div>
 
     <div class="box">
-        <% for (let i = 0; i < nextItems.length ; i++){ %>
-          <div class="item">
-            <input type="checkbox">
-            <p> <%= nextItems[i] %> </p>
-          </div>
+        <% nextItems.forEach(e => { %>
+          <form class="" action="/delete" method="post">
+            <div class="item">
+              <input type="checkbox" name="checkbox" value="<%= e._id %>" onchange="this.form.submit()">
+              <p> <%= e.name %> </p>
+            </div>
+            <input type= "hidden" name = "customList" value = "<%= givenDay %>">
+          </form>
 
-        <%  } %>
+        <% }); %>
+
 
         <form class="item" action="/" method="post">
           <input type="text" name="listItem" placeholder="Enter Item" autofocus autocomplete="off">
